@@ -1,0 +1,69 @@
+@use 'recipe'
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+.viewer
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: recipe.$viewer_min_height
+    background: recipe.$viewr_background
+
+.bowl
+    position: relative
+    width: recipe.$bowl_width__height
+    height: recipe.$bowl_width__height
+    background: recipe.$bowl_background
+    border-radius: 50%
+    transform: rotate(recipe.$rotate-recipe)
+
+.bowl::before
+    content: ''
+    position: absolute
+    top: recipe.$bowl-before_top
+    left: 50%
+    transform: translate(-50%)
+    width: recipe.$bowl-before_width
+    height: recipe.$bowl-before_height
+    border:  recipe.$bowl-before_border
+    border-radius: 50%
+    box-shadow: recipe.$bowl-before_box_shadow
+.bowl::after
+    content: ''
+    position: absolute
+    top: 40%
+    left: 50%
+    transform-origin: bottom center
+    transform: translate(-50%,-50%) rotate(recipe.$rotate-liquid)
+    border-radius: 50%
+    width: calc(recipe.$bowl_width__height/2)
+    height: recipe.$bowl-after_height
+    background: recipe.$bowl-after_background
+.liquid
+    position: absolute
+    inset: recipe.$liquid_fill 10px 10px 10px
+    background: recipe.$liquid_background
+    border-bottom-left-radius: recipe.$liquid_fill
+    border-bottom-right-radius: recipe.$liquid_fill
+    filter: drop-shadow(0 0 80px recipe.$liquid_background)
+    transform-origin: top center
+    transform: rotate(recipe.$rotate-liquid)
+.liquid::before
+    content:''
+    position: absolute
+    top: -10px
+    width: 100%
+    height: 20px
+    background: recipe.$liquid-after_background
+    border-radius: 50%
+    filter: drop-shadow(0 0 80px recipe.$liquid_background)
+.shadow
+    position: absolute
+    top: calc(50% + 150px)
+    left: 50%
+    transform: translate(-50%,-50%)
+    width: recipe.$bowl_width__height
+    height: 30px
+    background: recipe.$shadow_background
+    border-radius: 50%
