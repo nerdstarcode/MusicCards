@@ -1,4 +1,4 @@
-import './GlowingRecipe.css';
+import './GlowingRecipe.sass';
 type RecipeProps ={
     color?: string;
 }
