@@ -1,5 +1,16 @@
 @use 'card'
 //valores específicos para encaixarem no meu telefone, ainda estou organizando a ideia
+@mixin dimension ($width, $height)
+    height: $height
+    width: $width
+@mixin font-config($color: #A79696, $weight: 400, $size: auto , $lineheigh: height , $style: normal, $family: 'Jacques Francois')
+    line-height: $lineheigh
+    font-family: $family
+    font-weight: $weight
+    font-style: $style
+    font-size: $size
+    color: $color
+
 *
     margin: 0
     padding: 0
@@ -12,12 +23,10 @@
     min-width: card.$viewer_min_width
     background: card.$viewr_background
 .content
-    width: card.$content_width
-    height: card.$content_height
+    @include dimension(card.$content_width,card.$content_height)
 .music_content
-    width: 100%
-    height: 47%
-    background-image: card.$music_content-autumn
+    @include dimension(100%,47%)
+    background-image: card.$music_content-winter
     background-size: 100% 100%    
     display: grid
     grid-template-columns: 60%
@@ -26,25 +35,18 @@
     align-items: center
     text-align: center
     .music_display
-        margin-top: 30%
-        height: 100%
+        margin-top: 35%
+        @include dimension(auto,100%)
         background-image: url(./img/shibuya_covet.jpg)
         background-size: 100% 100%
         border-radius: 50%
-        box-shadow: 0 0 80px 5px card.$music_dysplay_box_shadow-autumn
+        box-shadow: 0 0 80px 5px card.$music_dysplay_box_shadow-winter
     .music_name
+        @include font-config
         margin-top: 40%
-        font-family: 'Jacques Francois'
-        font-style: normal
-        font-weight: 400
-        font-size: auto
-        line-height: 0.1em
-        text-align: center
-        color: #A79696
-        text-shadow: 0 0 0.3em card.$music_dysplay_box_shadow-autumn
+        text-shadow: 0 0 0.3em card.$music_dysplay_box_shadow-winter
 
 .layout_content
-    width: 100%
-    height: 54%
-    background-image: card.$layout_content-autumn
+    @include dimension(100%,54%)
+    background-image: card.$layout_content-winter
     background-size: 100% 100%
